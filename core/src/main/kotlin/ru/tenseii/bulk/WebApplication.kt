@@ -1,0 +1,17 @@
+package ru.tenseii.bulk
+
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.EnableConfigurationProperties
+
+@EnableConfigurationProperties
+@SpringBootApplication(scanBasePackages = ["ru.tenseii.bulk"])
+class WebApplication {
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(arrayOf(WebApplication::class.java), args)
+        }
+    }
+}

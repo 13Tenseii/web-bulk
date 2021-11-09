@@ -1,0 +1,20 @@
+{
+  "name": "single-auth-ui",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "stylus-loader": "4.3.3",
+    "stylus": "0.54.8",
+    "file-loader": "~6.2.0",
+    "ts-loader": "6.1.0",
+    "typescript": "3.2.4",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12"
+  },
+  "dependencies": {
+    "@plastique/core": "1.6.29",
+    "plastique-components": "github:codeplastique/plastique-components#1.41"
+  },
+  "private": true
+}

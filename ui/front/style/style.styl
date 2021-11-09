@@ -1,0 +1,30 @@
+html, body {
+  width 100%
+  height 100%
+}
+
+
+$smokeWhite = #ecf0f5
+$darkGrey = #222d32
+$leftSideColor = #3c8dbc
+$rightSideColor = #367fa9
+$turquoiseColor = #2b9c9b
+$mainGradient = linear-gradient(135deg, $leftSideColor, $rightSideColor)
+$authPageGradient = linear-gradient(135deg, #84c9f1, #27668b)
+$ROOT_TEXT_COLOR = #212529
+$headerHeight = 4rem
+$menuWidth = 14.375rem
+
+
+@require "../static/css/bootstrap.min.css"
+@require "../node_modules/plastique-components/style.styl"
+Plastique-Button-dropdown($textColor: $ROOT_TEXT_COLOR)
+Plastique-Dropdown()
+Plastique-Switcher()
+Plastique-Validable-field()
+Plastique-Validable-suffix()
+Plastique-Scroll-area();
+
+@require "Main.styl"
+@require "page/**/*"
+@require "component/**/*"

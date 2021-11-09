@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "target": "ES5",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "removeComments": true,
+    "noEmitHelpers": true,
+    "jsx": "react-native"
+  },
+  "include": [
+    "node_modules/@plastique/**/*",
+    "node_modules/plastique-components/**/*",
+    "src/**/*"
+  ]
+}

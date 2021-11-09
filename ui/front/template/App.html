@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SingleAuth</title>
+    <script th:src="@{/js/vue.min.js}"></script>
+    <script th:src="@{/js/noty.min.js}"></script>
+    <script th:src="@{'/js/app.locale_'+${lang}+'.js'}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/noty.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.min.css}" />
+</head>
+<body>
+    <div id="main"></div>
+
+    <script th:inline="javascript">
+
+
+        var properties = JSON.parse([[${data}]]);
+        new Main(document.getElementById("main"), properties);
+
+        /**
+         * check every request for situation, when user redirected from app
+         * on special web url
+         * it must be like this: localhost:8080/redirect?appId=1
+         */
+        window.onload = () => {
+            const REDIRECT_PATH = "/redirect"
+            const url = window.location.href
+            const app = window['Main']
+            const RestApi = app.beanNameToDef["RestApi"]
+            const RemoteAppsRestApi = app.beanNameToDef["RemoteAppsRestApi"]
+            if (url.includes(REDIRECT_PATH)) {
+                const splitted = url.split("?")
+                if (splitted.length === 2 ) {
+                    const reqParams = url.split("?")[1]
+                    const paramName = reqParams.split("=")[0]
+                    const paramValue = reqParams.split("=")[1]
+                    if (paramName === "appId") {
+                        RestApi.handleRedirectFromApp(Number.parseInt(paramValue))
+                            .then(resp => {
+                                RemoteAppsRestApi.redirectWithInfo(
+                                    resp.data.name, resp.data.roles,
+                                    resp.data.link, resp.data.token
+                                )
+                            })
+                            .catch(() => window.location.href = url.split(REDIRECT_PATH)[0])
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

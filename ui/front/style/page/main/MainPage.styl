@@ -1,0 +1,26 @@
+.Main-page {
+  display flex
+  flex-direction column
+  height 100%
+  width 100%
+
+  &__header {
+    height $headerHeight
+  }
+
+  &__body {
+    display flex
+    flex-direction row
+    height 100%
+    width 100%
+  }
+
+  &__menu {
+    width $menuWidth
+  }
+
+  &__content {
+    width calc(100% - 14.375rem)
+  }
+
+}
